@@ -1,30 +1,25 @@
 N, M = map(int, input().split())
 arr = []
-sed = 0
-arrMin = []
 
 for y in range(N):
-    line = list(map(int, input().split()))
-    arr.append(line)
-    arrMin.append(min(arr[y]))
+    arr.append(list(map(int, input().split())))
 
-sed = max(arrMin)
-sedY = arrMin.index(sed)
-for i in range(N):
-    if arr[sedY][i] == sed:
-        sedX = i
+maxY, posX, posY, tmpX = 0, 0, 0, 0
+for y in range(N):
+    minX = 1000000000
+    for x in range(M):
+        if arr[y][x] < minX:
+            minX = arr[y][x]
+            tmpX = x
+    if minX > maxY:
+        maxY = minX
+        posY = y
+        posX = tmpX
+for y in range(N):
+    if maxY < arr[y][posX]:
+        maxY = 0
         break
 
-if sed != 0:
-    print(sed)
-    print(sedY, sedX)
-else:
-    print(0)
-
-
-#5 6
-#2 3 2 3 2 5
-#1 2 1 2 1 3
-#9 8 9 8 5 6
-#3 4 3 4 3 4
-#2 1 2 1 2 3
+print(maxY)
+if maxY > 0:
+    print(posY, posX)
