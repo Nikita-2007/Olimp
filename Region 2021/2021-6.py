@@ -1,7 +1,7 @@
 x = input()
 k = int(input())
+n = x[0]
 if k == 0:
-    n = x[0]
     for i in x:
         if i == n:
             continue
@@ -12,5 +12,9 @@ if k == 0:
             break
     print(n*len(x))
 else:
-    pass
-
+    while True:
+        if max(x.count(x[0]), x.count(x[-1])) >= len(x) - 1:
+            print(x)
+            break
+        else:
+            x = str(int(x) +1)
