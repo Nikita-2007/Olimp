@@ -1,10 +1,3 @@
 for i in range(int(input())):
 	n, a = map(int, input().split())
-	x = ''
-	for j in range(n):
-		x = x+'1'
-	y = int(x)*a
-	z = 0
-	for j in str(y):
-		z += int(j)
-	print(z)
+	print(sum(map(int, str(int('1' * n)*a)))) if len(str(a)) >= n-1 else print(sum(map(int, str(int('1' * len(str(a)))*a))) + int(str(int('1'*(len(str(a))+2))*a)[len(str(int('1'*(len(str(a))+2))*a))//2]) * (n - len(str(a))))
